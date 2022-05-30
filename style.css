@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+* {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.42857143;
+    font-weight: 400;
+}
+
+body {
+    margin: 0 134.6px;
+    width: 1220px;
+
+}
+
+.content {
+    width: 1080px;
+    background-color: #d9d9d9;
+    margin: 50px auto;
+    padding: 50px;
+
+}
+
+input {
+    border-radius: 4px;
+    border: 1px solid #9f9f9f;
+    background: #fff;
+    padding: 10px 20px;
+    min-width: 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.sendButton {
+    cursor: pointer;
+    background: #2b2a29;
+    border: 1px solid #2b2a29;
+    color: #fff;
+    border-radius: 4px;
+    text-transform: none;
+    width: unset;
+    height: unset;
+    transition: unset;
+    padding: 10px 50px;
+    font-size: 17px;
+    text-decoration: none;
+    letter-spacing: normal;
+    margin-top: 20px;
+}
+
+.form {
+    width: 260px;
+    margin: 0 auto;
+
+}
+
+h1 {
+    margin: 0 0 50px;
+    text-align: center;
+    font-size: 24px;
+    color: #000;
+    font-weight: 300;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 12px;
+}

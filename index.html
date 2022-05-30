@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Feedback form</title>
+</head>
+<body>
+    <script type="text/javascript" src="index.js"></script>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted)  {window.location='';}">
+    </iframe>
+    <div class="content">
+        <h1>Заполните форму обратной связи</h1>
+        <form class="form"
+              action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdrLInNZysnl-YwnX4anlgXuGBmBc_b5CS2u-XCr1yiDWWudg/formResponse"
+              method="post"
+              target="hidden_iframe"
+              onsubmit="submitted = checkData()">
+
+            <label for="name">Имя*</label>
+            <input id="name" name="entry.1157479794" type="text" required placeholder="Имя" autocomplete="off"/>
+
+            <label for="email">Email</label>
+            <input id="email" name="entry.885707975" type="text" placeholder="Email" autocomplete="off"/>
+            <span class="errorMessage" id="emailMessage"></span>
+
+            <label for="phone">Номер телефона*</label>
+            <input id="phone" name="entry.1842186340" type="text" required placeholder="Номер телефона" autocomplete="off"/>
+            <span class="errorMessage" id="phoneMessage"></span>
+
+            <label for="vendorCode">Артикул</label>
+            <input id="vendorCode" name="entry.377302578" type="text" placeholder="Артикул" autocomplete="off"/>
+
+            <input type="submit" value="Отправить" class="sendButton" />
+
+        </form>
+    </div>
+
+</body>
+</html>
