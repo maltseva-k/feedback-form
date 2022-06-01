@@ -16,7 +16,7 @@
               action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdrLInNZysnl-YwnX4anlgXuGBmBc_b5CS2u-XCr1yiDWWudg/formResponse"
               method="post"
               target="hidden_iframe"
-              onsubmit="submitted = checkData()">
+              onsubmit="return checkData()">
 
             <label for="name">Имя*</label>
             <input id="name" name="entry.1157479794" type="text" required placeholder="Имя" autocomplete="off"/>
@@ -33,6 +33,8 @@
             <input id="vendorCode" name="entry.377302578" type="text" placeholder="Артикул" autocomplete="off"/>
 
             <input type="submit" value="Отправить" class="sendButton" />
+
+            <span id="successfulMessage"></span>
 
         </form>
     </div>
