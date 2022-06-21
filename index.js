@@ -45,7 +45,8 @@ function checkData() {
         submitted = ValidPhone()
     }*/
     if (submitted === true) {
-        document.getElementById('successfulMessage').innerHTML = 'Данные успешно отправлены!';
+        document.getElementById('formContent').style.display = 'none';
+        document.getElementById('successfulMessage').innerHTML = 'Спасибо, теперь вы участвуете в розыгрыше призов!';
     }
 
     return submitted
