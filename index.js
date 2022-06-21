@@ -24,16 +24,27 @@ function ValidMail() {
     return valid;
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    IMask(
+        document.getElementById('phone'), {
+            mask: '{7} (000) 000 00 00',
+            lazy: true
+        })
+})
 function ValidPhone() {
-    var re = /^[\d\+][\d\(\)\ -]{4,14}\d$/;
+/*    var re = /^[\d\+][\d\(\)\ -]{4,14}\d$/;
     var myPhone = document.getElementById('phone').value;
-    var valid = re.test(myPhone);
-    if (!valid) {
+    var valid = re.test(myPhone);*/
+    let valid = false
+    let phoneLength = document.getElementById('phone').value.length
+    if (phoneLength !== 17) {
+        valid = false
         document.getElementById('phoneMessage').innerHTML = 'Введите корректные данные в поле Номер телефона';
     } else {
+        valid = true
         document.getElementById('phoneMessage').innerHTML = '';
     }
-    return valid;
+    return valid
 }
 
 function ValidBarcode() {
@@ -49,7 +60,7 @@ function ValidBarcode() {
 }
 
 function checkData() {
-    submitted = ValidMail()&&ValidPhone()&&ValidName()&&ValidBarcode()
+    submitted = ValidName()&&ValidMail()&&ValidPhone()&&ValidBarcode()
 /*    var myMail = document.getElementById('email').value;
     if (myMail !== '') {
 
