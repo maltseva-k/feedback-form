@@ -36,8 +36,20 @@ function ValidPhone() {
     return valid;
 }
 
+function ValidBarcode() {
+    var re = /(^31|^32|^33|^34)(\d{11}$)/;
+    var myBarcode = document.getElementById('barcode').value;
+    var valid = re.test(myBarcode);
+    if (!valid) {
+        document.getElementById('barcodeMessage').innerHTML = 'Введите корректные данные в поле Штрих-код';
+    } else {
+        document.getElementById('barcodeMessage').innerHTML = '';
+    }
+    return valid;
+}
+
 function checkData() {
-    submitted = ValidMail()&&ValidPhone()&&ValidName()
+    submitted = ValidMail()&&ValidPhone()&&ValidName()&&ValidBarcode()
 /*    var myMail = document.getElementById('email').value;
     if (myMail !== '') {
 
