@@ -103,14 +103,16 @@ function CheckUnicBarcode() {
 
 }
 function checkData() {
-        submitted = ValidName()&&ValidMail()&&ValidPhone()&&ValidBarcode()&&CheckUnicBarcode()
-
-        if (submitted === true) {
-            document.getElementById('formContent').style.display = 'none';
-            document.getElementById('successfulMessage').innerHTML = 'Спасибо, теперь вы участвуете в розыгрыше призов!';
-        }
+    submitted = ValidName()&&ValidMail()&&ValidPhone()&&ValidBarcode()&&CheckUnicBarcode()
 
     return submitted
 
+}
+
+function hiddenFormBeforeSubmit() {
+    if (submitted === true) {
+        document.getElementById('formContent').style.display = 'none';
+        document.getElementById('successfulMessage').innerHTML = 'Спасибо, теперь вы участвуете в розыгрыше призов!';
+    }
 }
 
