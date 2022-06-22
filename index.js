@@ -1,6 +1,6 @@
 var submitted=false;
 function ValidName() {
-    var re = /^(\w|[а-яА-ЯёЁ]+|-)+$/;
+    var re = /^(\w|[а-яА-ЯёЁ ]+|-)+$/;
     var myPhone = document.getElementById('name').value;
     var valid = re.test(myPhone);
     if (!valid) {
@@ -73,20 +73,23 @@ function ValidBarcode() {
 }
 
 function checkData() {
-    submitted = ValidName()&&ValidMail()&&ValidPhone()&&ValidBarcode()
+/*    submitted = ValidName()&&ValidMail()&&ValidPhone()&&ValidBarcode()
 
-/*    var myMail = document.getElementById('email').value;
+/!*    var myMail = document.getElementById('email').value;
     if (myMail !== '') {
 
     } else {
         submitted = ValidPhone()
-    }*/
+    }*!/
     if (submitted === true) {
         document.getElementById('formContent').style.display = 'none';
         document.getElementById('successfulMessage').innerHTML = 'Спасибо, теперь вы участвуете в розыгрыше призов!';
     }
 
-    return submitted
+    return submitted*/
+
+    ValidName()
+    return false
 }
 
 function getData() {
