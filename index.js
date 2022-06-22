@@ -46,7 +46,13 @@ function ValidPhone() {
     }
     return valid
 }
-
+document.addEventListener('DOMContentLoaded', () => {
+    IMask(
+        document.getElementById('barcode'), {
+            mask: '0000000000000',
+            lazy: true
+        })
+})
 function ValidBarcode() {
     var re = /(^31|^32|^33|^34)(\d{11}$)/;
     var myBarcode = document.getElementById('barcode').value;
@@ -73,23 +79,21 @@ function ValidBarcode() {
 }
 
 function checkData() {
-/*    submitted = ValidName()&&ValidMail()&&ValidPhone()&&ValidBarcode()
+    submitted = ValidName()&&ValidMail()&&ValidPhone()&&ValidBarcode()
 
-/!*    var myMail = document.getElementById('email').value;
+/*    var myMail = document.getElementById('email').value;
     if (myMail !== '') {
 
     } else {
         submitted = ValidPhone()
-    }*!/
+    }*/
     if (submitted === true) {
         document.getElementById('formContent').style.display = 'none';
         document.getElementById('successfulMessage').innerHTML = 'Спасибо, теперь вы участвуете в розыгрыше призов!';
     }
 
-    return submitted*/
+    return submitted
 
-    ValidName()
-    return false
 }
 
 function getData() {
