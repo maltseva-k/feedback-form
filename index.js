@@ -54,13 +54,27 @@ function ValidBarcode() {
     if (!valid) {
         document.getElementById('barcodeMessage').innerHTML = 'Введите корректные данные в поле Штрих-код';
     } else {
-        document.getElementById('barcodeMessage').innerHTML = '';
+        let double = false
+
+        infoBarcodes.forEach((item)=>{
+            if (item.toString() === myBarcode.toString()) {
+                console.log('UPS!')
+                double = true
+            }
+
+        })
+        if (double === true) {
+            document.getElementById('barcodeMessage').innerHTML = 'Данный штрих-код уже зарегистрирован';
+        } else {
+            document.getElementById('barcodeMessage').innerHTML = '';
+        }
     }
     return valid;
 }
 
 function checkData() {
     submitted = ValidName()&&ValidMail()&&ValidPhone()&&ValidBarcode()
+
 /*    var myMail = document.getElementById('email').value;
     if (myMail !== '') {
 
@@ -74,3 +88,22 @@ function checkData() {
 
     return submitted
 }
+
+function getData() {
+    return fetch('https://script.google.com/macros/s/AKfycbzGvKKUIaqsMuCj7-A2YRhR-f7GZjl4kSxSN1YyLkS01_CfiyE/exec?id=1EuEvFH4mM_GiE0CVpt3wJvk1lUhazj24D26kq5tFjss&sheet=Ответы на форму (2)')
+        .then((response) => response.json())
+}
+
+getData()
+    .then(data => data.records)
+    .then(data => {
+        var items = data.map(function(item) {
+            return item.Barcode
+        });
+        return items
+    })
+    .then(data=> localStorage.setItem('searchResult', JSON.stringify(data)))
+
+
+const infoBarcodes = localStorage.getItem('searchResult') ? JSON.parse(localStorage.getItem('searchResult')) : []
+
