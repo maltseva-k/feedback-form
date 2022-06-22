@@ -1,4 +1,22 @@
 var submitted=false;
+
+function getData() {
+    return fetch('https://script.google.com/macros/s/AKfycbzGvKKUIaqsMuCj7-A2YRhR-f7GZjl4kSxSN1YyLkS01_CfiyE/exec?id=1EuEvFH4mM_GiE0CVpt3wJvk1lUhazj24D26kq5tFjss&sheet=Ответы на форму (2)')
+        .then((response) => response.json())
+}
+
+getData()
+    .then(data => data.records)
+    .then(data => {
+        var items = data.map(function(item) {
+            return item.Barcode
+        });
+        return items
+    })
+    .then(data=> localStorage.setItem('searchResult', JSON.stringify(data)))
+
+
+
 function ValidName() {
     var re = /^(\w|[а-яА-ЯёЁ ]+|-)+$/;
     var myPhone = document.getElementById('name').value;
@@ -67,27 +85,13 @@ function ValidBarcode() {
 
 function CheckUnicBarcode() {
     let barcodeUnic = true
-    var myBarcode = document.getElementById('barcode').value;
-    function getData() {
-        return fetch('https://script.google.com/macros/s/AKfycbzGvKKUIaqsMuCj7-A2YRhR-f7GZjl4kSxSN1YyLkS01_CfiyE/exec?id=1EuEvFH4mM_GiE0CVpt3wJvk1lUhazj24D26kq5tFjss&sheet=Ответы на форму (2)')
-            .then((response) => response.json())
-    }
-
-    getData()
-        .then(data => data.records)
-        .then(data => {
-            var items = data.map(function(item) {
-                return item.Barcode
-            });
-            return items
-        })
-        .then(data=> localStorage.setItem('searchResult', JSON.stringify(data)))
+    var barcodeValue = document.getElementById('barcode').value;
 
 
     const infoBarcodes = localStorage.getItem('searchResult') ? JSON.parse(localStorage.getItem('searchResult')) : []
 
     infoBarcodes.forEach((item)=>{
-        if (item.toString() === myBarcode.toString()) {
+        if (item.toString() === barcodeValue.toString()) {
             barcodeUnic = false
         }
     })
