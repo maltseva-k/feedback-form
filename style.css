@@ -7,16 +7,18 @@
 }
 
 body {
-    margin: 0 134.6px;
-    width: 1220px;
+    margin: 0;
+    width: 100%;
 
 }
 
 .content {
-    width: 1080px;
-    background-color: #d9d9d9;
+    width: 340px;
+    height: 650px;
+    background-color: #f9f9f9;
     margin: 50px auto;
-    padding: 50px;
+    padding: 30px;
+    box-sizing: border-box;
 
 }
 
@@ -25,12 +27,12 @@ input {
     border: 1px solid #9f9f9f;
     background: #fff;
     padding: 10px 20px;
-    min-width: 160px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
 .sendButton {
@@ -40,32 +42,76 @@ input {
     color: #fff;
     border-radius: 4px;
     text-transform: none;
-    width: unset;
-    height: unset;
-    transition: unset;
     padding: 10px 50px;
+    display: flex;
+    justify-content: center;
     font-size: 17px;
     text-decoration: none;
     letter-spacing: normal;
-    margin-top: 20px;
+    margin-top: 30px;
+    width: 69%;
+    margin-left: 35px;
+    margin-right: auto;
+
 }
 
 .form {
-    width: 260px;
-    margin: 0 auto;
+    width: 100%;
 
 }
 
-h1 {
+h1,
+#successfulMessage {
     margin: 0 0 50px;
     text-align: center;
     font-size: 24px;
     color: #000;
     font-weight: 300;
 }
+#successfulMessage {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+    box-sizing: border-box;
+}
 
 .errorMessage {
     color: red;
-    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    font-size: 14px;
     display: block;
+    width: 100%;
+}
+
+#barcode {
+    letter-spacing: 10px;
+}
+
+label {
+    font-size: 17px;
+    margin-top: 20px;
+}
+
+input, input::placeholder {
+    font-size: 14px;
+}
+
+h1,
+input {
+    width: 100%;
+}
+
+.logo {
+    width: 300px;
+    height: 36px;
+
+}
+
+.content a {
+    width: 100%;
+    height: 65px;
+    display: flex;
+    justify-content: center;
 }
