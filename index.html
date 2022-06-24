@@ -24,21 +24,29 @@
                   target="hidden_iframe"
                   onsubmit="return checkData()">
 
-                <label for="name">Имя*</label>
-                <input id="name" name="entry.1157479794" type="text" required placeholder="Ваше имя" autocomplete="off"/>
-                <span class="errorMessage" id="nameMessage"></span>
+                <div class="input__wrap">
+                    <label for="name">Имя*</label>
+                    <input id="name" name="entry.1157479794" type="text" required placeholder="Ваше имя" autocomplete="off"/>
+                    <span class="errorMessage" id="nameMessage"></span>
+                </div>
 
-                <label for="email">Email*</label>
-                <input id="email" name="entry.885707975" type="text" required placeholder="example@mail.com" autocomplete="off"/>
-                <span class="errorMessage" id="emailMessage"></span>
+                <div class="input__wrap">
+                    <label for="email">Email*</label>
+                    <input id="email" name="entry.885707975" type="text" required placeholder="example@mail.com" autocomplete="off"/>
+                    <span class="errorMessage" id="emailMessage"></span>
+                </div>
 
-                <label for="phone">Номер телефона*</label>
-                <input id="phone" name="entry.1842186340" type="text" required placeholder="7 (999) 999 99 99" autocomplete="off"/>
-                <span class="errorMessage" id="phoneMessage"></span>
+                <div class="input__wrap">
+                    <label for="phone">Номер телефона*</label>
+                    <input id="phone" name="entry.1842186340" type="text" required placeholder="7 (999) 999 99 99" autocomplete="off"/>
+                    <span class="errorMessage" id="phoneMessage"></span>
+                </div>
 
-                <label for="barcode">Штрих-код*</label>
-                <input id="barcode" name="entry.377302578" type="text" required placeholder="3300000000000" maxlength="13" autocomplete="off"/>
-                <span class="errorMessage" id="barcodeMessage"></span>
+                <div class="input__wrap">
+                    <label for="barcode">Штрих-код*</label>
+                    <input id="barcode" name="entry.377302578" type="text" required placeholder="3300000000000" maxlength="13" autocomplete="off"/>
+                    <span class="errorMessage" id="barcodeMessage"></span>
+                </div>
 
                 <input type="submit" value="Отправить" class="sendButton" />
 

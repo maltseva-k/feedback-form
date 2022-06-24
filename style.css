@@ -49,7 +49,7 @@ input {
     letter-spacing: normal;
     margin-top: 30px;
     width: 69%;
-    margin-left: 35px;
+    margin-left: auto;
     margin-right: auto;
 }
 
@@ -105,4 +105,24 @@ input, input::placeholder {
     height: 65px;
     display: flex;
     justify-content: center;
+}
+/*Текущий вариант оставляем для медиазапроса < 767px
+                                                Для всего, что 768px и шире делаем вариант как на скрине.
+- .content -> width: 680px;
+- form -> width: 70%
+- отступы у заголовоков слева сделать, чтобы они вровень с инпутами была
+- не забыть про отступы у подписей при неверных данных в формах (тоже на скрине)*/
+@media screen and (min-width: 768px) {
+    .content {
+        width: 680px;
+    }
+    .form, h1, input, .input__wrap {
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .form, .input__wrap {
+        width: 70%;
+
+    }
 }
