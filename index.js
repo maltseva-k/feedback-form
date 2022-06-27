@@ -1,6 +1,7 @@
 // Запрещаем отправку до окончания проверки формы
 let submitted = false;
 
+/*
 // Получаем данные
 function getData() {
     return fetch('https://script.google.com/macros/s/AKfycbzGvKKUIaqsMuCj7-A2YRhR-f7GZjl4kSxSN1YyLkS01_CfiyE/exec?id=1EuEvFH4mM_GiE0CVpt3wJvk1lUhazj24D26kq5tFjss&sheet=Ответы на форму (2)')
@@ -17,6 +18,7 @@ getData()
         return items
     })
     .then(data=> localStorage.setItem('searchResult', JSON.stringify(data)))
+*/
 
 // Проверяем валидность поля Имя
 function ValidName() {
@@ -92,6 +94,7 @@ function ValidBarcode() {
     return valid;
 }
 
+/*
 // Проверяем уникальность поля Штрих-код (т.е. исключаем повторную регистрацию штрих-кода)
 function CheckUnicBarcode() {
     let barcodeUnic = true
@@ -109,6 +112,7 @@ function CheckUnicBarcode() {
     }
     return barcodeUnic
 }
+*/
 
 // Проверяем введенные данные, если корректны - отправляем форму
 function checkData() {
@@ -117,7 +121,8 @@ function checkData() {
     ValidPhone()
     ValidBarcode()
 
-    submitted = ValidName()&&ValidMail()&&ValidPhone()&&ValidBarcode()&&CheckUnicBarcode()
+    /* submitted = ValidName()&&ValidMail()&&ValidPhone()&&ValidBarcode()&&CheckUnicBarcode() */
+    submitted = ValidName()&&ValidMail()&&ValidPhone()&&ValidBarcode()
 
     return submitted
 }
@@ -131,4 +136,3 @@ function hiddenFormBeforeSubmit() {
 
     }
 }
-
