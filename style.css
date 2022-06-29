@@ -34,7 +34,8 @@ input {
     box-sizing: border-box;
 }
 
-.sendButton {
+.sendButton,
+.comeBackButton {
     cursor: pointer;
     background: #2b2a29;
     border: 1px solid #2b2a29;
@@ -70,7 +71,7 @@ h1,
     width: 100%;
     justify-content: center;
     align-self: center;
-    margin: auto 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
@@ -118,6 +119,16 @@ input, input::placeholder {
     justify-content: center;
 }
 
+.successfulMessage__wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.comeBackButton {
+    display: none;
+}
+
 @media screen and (min-width: 768px) {
     .content {
         width: 680px;
@@ -130,5 +141,8 @@ input, input::placeholder {
     .form, .input__wrap {
         width: 70%;
 
+    }
+    .comeBackButton {
+        width: 195.3px;
     }
 }

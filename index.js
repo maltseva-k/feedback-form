@@ -133,6 +133,7 @@ function hiddenFormBeforeSubmit() {
         document.getElementById('formContent').style.display = 'none';
         document.querySelector('.successfulMessage__wrap').style.height = '650px';
         document.getElementById('successfulMessage').innerHTML = 'Спасибо, теперь вы участвуете в розыгрыше призов!';
+        document.querySelector('.comeBackButton').style.display = 'flex';
 
     }
 }
