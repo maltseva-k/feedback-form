@@ -1,5 +1,6 @@
 // Запрещаем отправку до окончания проверки формы
 let submitted = false;
+let barcodesArray = [];
 
 /*
 // Получаем данные
@@ -19,6 +20,36 @@ getData()
     })
     .then(data=> localStorage.setItem('searchResult', JSON.stringify(data)))
 */
+
+// Получаем данные
+function getData() {
+    return fetch('https://script.google.com/macros/s/AKfycbzGvKKUIaqsMuCj7-A2YRhR-f7GZjl4kSxSN1YyLkS01_CfiyE/exec?id=1EuEvFH4mM_GiE0CVpt3wJvk1lUhazj24D26kq5tFjss&sheet=Ответы на форму (2)')
+        .then((response) => response.json())
+        .then(data => data.records)
+        .then(data => {
+            let items = data.map(function(item) {
+                return item.Barcode
+            });
+            return items
+        })
+        .then(data=> barcodesArray = data)
+}
+getData()
+
+/*
+// Забираем в barcodesArray только массив штрихкодов
+getData()
+    .then(data => data.records)
+    .then(data => {
+        let items = data.map(function(item) {
+            return item.Barcode
+        });
+        return items
+    })
+    .then(data=> barcodesArray = data)
+    .then(barcodesArray => CheckUnicBarcode(barcodesArray))
+*/
+
 
 // Проверяем валидность поля Имя
 function ValidName() {
@@ -90,18 +121,21 @@ function ValidBarcode() {
         document.getElementById('barcodeMessage').innerHTML = 'Введите корректные данные в поле Штрих-код';
     } else {
         document.getElementById('barcodeMessage').innerHTML = '';
+        console.log('идет проверка уникальности')
+        valid = CheckUnicBarcode(myBarcode)
+
     }
+
     return valid;
 }
 
-/*
 // Проверяем уникальность поля Штрих-код (т.е. исключаем повторную регистрацию штрих-кода)
-function CheckUnicBarcode() {
+function CheckUnicBarcode(myBarcode) {
     let barcodeUnic = true
-    let barcodeValue = document.getElementById('barcode').value;
-    const infoBarcodes = localStorage.getItem('searchResult') ? JSON.parse(localStorage.getItem('searchResult')) : []
-    infoBarcodes.forEach((item)=>{
-        if (item.toString() === barcodeValue.toString()) {
+/*    let barcodeValue = document.getElementById('barcode').value;*/
+/*    const infoBarcodes = localStorage.getItem('searchResult') ? JSON.parse(localStorage.getItem('searchResult')) : []*/
+    barcodesArray.forEach((item)=>{
+        if (item.toString() === myBarcode.toString()) {
             barcodeUnic = false
         }
     })
@@ -110,9 +144,9 @@ function CheckUnicBarcode() {
     } else {
         document.getElementById('barcodeMessage').innerHTML = 'Данный штрих-код уже зарегистрирован';
     }
+    console.log(barcodeUnic)
     return barcodeUnic
 }
-*/
 
 // Проверяем введенные данные, если корректны - отправляем форму
 function checkData() {
