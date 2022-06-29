@@ -121,7 +121,7 @@ function ValidBarcode() {
         document.getElementById('barcodeMessage').innerHTML = 'Введите корректные данные в поле Штрих-код';
     } else {
         document.getElementById('barcodeMessage').innerHTML = '';
-        console.log('идет проверка уникальности')
+
         valid = CheckUnicBarcode(myBarcode)
 
     }
@@ -144,7 +144,7 @@ function CheckUnicBarcode(myBarcode) {
     } else {
         document.getElementById('barcodeMessage').innerHTML = 'Данный штрих-код уже зарегистрирован';
     }
-    console.log(barcodeUnic)
+
     return barcodeUnic
 }
 
