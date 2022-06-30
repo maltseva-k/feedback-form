@@ -2,6 +2,29 @@
 let submitted = false;
 let barcodesArray = [];
 
+function getBarcodes() {
+    return fetch('https://script.google.com/macros/s/AKfycbzGvKKUIaqsMuCj7-A2YRhR-f7GZjl4kSxSN1YyLkS01_CfiyE/exec?id=1EuEvFH4mM_GiE0CVpt3wJvk1lUhazj24D26kq5tFjss&sheet=Barcodes')
+        .then((response) => response.json())
+        .then(data => data.records)
+        .then(data => {
+            let items = data.map(function(item) {
+                return item.Barcode
+            });
+            return items
+        })
+        .then(data=> barcodesArray = data)
+
+}
+getBarcodes()
+/*function getData() {
+    return fetch('https://script.google.com/macros/s/AKfycbzGvKKUIaqsMuCj7-A2YRhR-f7GZjl4kSxSN1YyLkS01_CfiyE/exec?id=1EuEvFH4mM_GiE0CVpt3wJvk1lUhazj24D26kq5tFjss&sheet=Ответы на форму (2)')
+        .then((response) => response.json())
+        .then(data=>console.log(data))
+
+}*/
+
+
+
 /*
 // Получаем данные
 function getData() {
@@ -22,19 +45,21 @@ getData()
 */
 
 // Получаем данные
+/*
 function getData() {
     return fetch('https://script.google.com/macros/s/AKfycbzGvKKUIaqsMuCj7-A2YRhR-f7GZjl4kSxSN1YyLkS01_CfiyE/exec?id=1EuEvFH4mM_GiE0CVpt3wJvk1lUhazj24D26kq5tFjss&sheet=Ответы на форму (2)')
         .then((response) => response.json())
-        .then(data => data.records)
-        .then(data => {
-            let items = data.map(function(item) {
-                return item.Barcode
-            });
-            return items
-        })
-        .then(data=> barcodesArray = data)
+
 }
-getData()
+getData().then(data => data.records)
+    .then(data => {
+        let items = data.map(function(item) {
+            return item.Barcode
+        });
+        return items
+    })
+    .then(data=> barcodesArray = data)
+*/
 
 /*
 // Забираем в barcodesArray только массив штрихкодов
@@ -121,7 +146,6 @@ function ValidBarcode() {
         document.getElementById('barcodeMessage').innerHTML = 'Введите корректные данные в поле Штрих-код';
     } else {
         document.getElementById('barcodeMessage').innerHTML = '';
-
         valid = CheckUnicBarcode(myBarcode)
 
     }
@@ -159,6 +183,8 @@ function checkData() {
     submitted = ValidName()&&ValidMail()&&ValidPhone()&&ValidBarcode()
 
     return submitted
+
+
 }
 
 // Скрываем форму и выводим сообщение об успехе
@@ -168,6 +194,10 @@ function hiddenFormBeforeSubmit() {
         document.querySelector('.successfulMessage__wrap').style.height = '650px';
         document.getElementById('successfulMessage').innerHTML = 'Спасибо, теперь вы участвуете в розыгрыше призов!';
         document.querySelector('.comeBackButton').style.display = 'flex';
-
     }
+}
+
+function updatePage() {
+    window.location.reload()
+
 }
