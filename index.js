@@ -23,8 +23,6 @@ getBarcodes()
 
 }*/
 
-
-
 /*
 // Получаем данные
 function getData() {
@@ -183,8 +181,6 @@ function checkData() {
     submitted = ValidName()&&ValidMail()&&ValidPhone()&&ValidBarcode()
 
     return submitted
-
-
 }
 
 // Скрываем форму и выводим сообщение об успехе
