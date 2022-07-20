@@ -9,14 +9,17 @@
 body {
     margin: 0;
     width: 100%;
+    background-size: cover;
+    background-image: url("img/1536х2160.jpg");
 }
 
 .content {
     width: 340px;
     min-height: 650px;
     max-height: content-box;
+    /*background-color: transparent;*/
     background-color: #f9f9f9;
-    margin: 50px auto;
+    margin: 160px auto;
     padding: 30px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -183,6 +186,10 @@ input, input::placeholder {
 }
 
 @media screen and (min-width: 768px) {
+    body {
+        background-size: cover;
+        background-image: url("img/3840х2160.jpg");
+    }
     .content {
         width: 680px;
     }
