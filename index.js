@@ -3,7 +3,7 @@ let submitted = false;
 let barcodesArray = [];
 
 function getBarcodes() {
-    return fetch('https://script.google.com/macros/s/AKfycbzGvKKUIaqsMuCj7-A2YRhR-f7GZjl4kSxSN1YyLkS01_CfiyE/exec?id=1EuEvFH4mM_GiE0CVpt3wJvk1lUhazj24D26kq5tFjss&sheet=Barcodes')
+    return fetch('https://script.google.com/macros/s/AKfycbzGvKKUIaqsMuCj7-A2YRhR-f7GZjl4kSxSN1YyLkS01_CfiyE/exec?id=1YzfCHeBI8YD5t-hI8n5S_phAkaqCTpyXRimVKrDh8C8&sheet=Barcodes')
         .then((response) => response.json())
         .then(data => data.records)
         .then(data => {
@@ -16,63 +16,6 @@ function getBarcodes() {
 
 }
 getBarcodes()
-/*function getData() {
-    return fetch('https://script.google.com/macros/s/AKfycbzGvKKUIaqsMuCj7-A2YRhR-f7GZjl4kSxSN1YyLkS01_CfiyE/exec?id=1EuEvFH4mM_GiE0CVpt3wJvk1lUhazj24D26kq5tFjss&sheet=Ответы на форму (2)')
-        .then((response) => response.json())
-        .then(data=>console.log(data))
-
-}*/
-
-/*
-// Получаем данные
-function getData() {
-    return fetch('https://script.google.com/macros/s/AKfycbzGvKKUIaqsMuCj7-A2YRhR-f7GZjl4kSxSN1YyLkS01_CfiyE/exec?id=1EuEvFH4mM_GiE0CVpt3wJvk1lUhazj24D26kq5tFjss&sheet=Ответы на форму (2)')
-        .then((response) => response.json())
-}
-
-// Забираем в Local Storage только массив штрихкодов
-getData()
-    .then(data => data.records)
-    .then(data => {
-        let items = data.map(function(item) {
-            return item.Barcode
-        });
-        return items
-    })
-    .then(data=> localStorage.setItem('searchResult', JSON.stringify(data)))
-*/
-
-// Получаем данные
-/*
-function getData() {
-    return fetch('https://script.google.com/macros/s/AKfycbzGvKKUIaqsMuCj7-A2YRhR-f7GZjl4kSxSN1YyLkS01_CfiyE/exec?id=1EuEvFH4mM_GiE0CVpt3wJvk1lUhazj24D26kq5tFjss&sheet=Ответы на форму (2)')
-        .then((response) => response.json())
-
-}
-getData().then(data => data.records)
-    .then(data => {
-        let items = data.map(function(item) {
-            return item.Barcode
-        });
-        return items
-    })
-    .then(data=> barcodesArray = data)
-*/
-
-/*
-// Забираем в barcodesArray только массив штрихкодов
-getData()
-    .then(data => data.records)
-    .then(data => {
-        let items = data.map(function(item) {
-            return item.Barcode
-        });
-        return items
-    })
-    .then(data=> barcodesArray = data)
-    .then(barcodesArray => CheckUnicBarcode(barcodesArray))
-*/
-
 
 // Проверяем валидность поля Имя
 function ValidName() {
@@ -111,9 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Проверяем валидность поля Номер телефона
 function ValidPhone() {
-/*  let re = /^[\d\+][\d\(\)\ -]{4,14}\d$/;
-    let myPhone = document.getElementById('phone').value;
-    let valid = re.test(myPhone); */
     let valid = false
     let phoneLength = document.getElementById('phone').value.length
     if (phoneLength !== 17) {
@@ -137,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Проверяем валидность поля Штрих-код
 function ValidBarcode() {
-    let re = /(^31|^32|^33|^34)(\d{11}$)/;
+    let re = /(^2)(\d{12}$)/;
     let myBarcode = document.getElementById('barcode').value;
     let valid = re.test(myBarcode);
     if (!valid) {
@@ -147,15 +87,13 @@ function ValidBarcode() {
         valid = CheckUnicBarcode(myBarcode)
 
     }
-
     return valid;
 }
 
 // Проверяем уникальность поля Штрих-код (т.е. исключаем повторную регистрацию штрих-кода)
 function CheckUnicBarcode(myBarcode) {
     let barcodeUnic = true
-/*    let barcodeValue = document.getElementById('barcode').value;*/
-/*    const infoBarcodes = localStorage.getItem('searchResult') ? JSON.parse(localStorage.getItem('searchResult')) : []*/
+
     barcodesArray.forEach((item)=>{
         if (item.toString() === myBarcode.toString()) {
             barcodeUnic = false
@@ -177,7 +115,6 @@ function checkData() {
     ValidPhone()
     ValidBarcode()
 
-    /* submitted = ValidName()&&ValidMail()&&ValidPhone()&&ValidBarcode()&&CheckUnicBarcode() */
     submitted = ValidName()&&ValidMail()&&ValidPhone()&&ValidBarcode()
 
     return submitted
@@ -195,5 +132,4 @@ function hiddenFormBeforeSubmit() {
 
 function updatePage() {
     window.location.reload()
-
 }
